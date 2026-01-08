@@ -1,0 +1,165 @@
+/* 기본 초기화 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f7f7f7; }
+
+.mobile-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 상단 네비게이션 */
+.top-nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #eff3f4;
+    z-index: 100;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+}
+
+.mini-profile { width: 32px; height: 32px; border-radius: 50%; }
+.main-logo { font-size: 22px; }
+.upgrade-text { font-weight: bold; font-size: 14px; margin-right: 15px; }
+
+/* 탭 메뉴 */
+.tabs { display: flex; height: 50px; }
+.tab {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #536471;
+    cursor: pointer;
+}
+.tab.active {
+    color: #0f1419;
+    border-bottom: 4px solid #1d9bf0; /* 파란색 강조선 */
+}
+
+/* 트윗 스타일 */
+.feed { flex: 1; }
+.tweet {
+    display: flex;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eff3f4;
+}
+.tweet-pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 12px; }
+.tweet-content { flex: 1; }
+.tweet-user-info .name { font-weight: bold; margin-right: 4px; }
+.tweet-user-info .details { color: #536471; font-size: 14px; }
+.text { margin-top: 4px; line-height: 20px; font-size: 15px; }
+
+.tweet-image-box { margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1px solid #eff3f4; }
+.tweet-image-box img { width: 100%; display: block; }
+
+/* 하단 액션 버튼 */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    color: #536471;
+    font-size: 13px;
+    max-width: 425px;
+}
+.action-right { display: flex; gap: 15px; }
+
+/* 플로팅 버튼 (+) */
+.floating-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: #1d9bf0;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 22px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.plus-icon { position: absolute; top: 12px; left: 14px; font-size: 14px; font-weight: bold; }
+
+/* 하단 네비게이션 바 */
+.bottom-nav {
+    position: sticky;
+    bottom: 0;
+    height: 50px;
+    background-color: white;
+    border-top: 1px solid #eff3f4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
+    color: #0f1419;
+}
+
+/* 해시태그 스타일 */
+.hashtag {
+    color: #1d9bf0; /* X(트위터)의 파란색과 유사한 색상 */
+    font-weight: bold; /* 선택 사항: 해시태그를 더 강조하고 싶다면 */
+    cursor: pointer; /* 선택 사항: 클릭 가능한 링크처럼 보이게 */
+}
+
+/* 트윗 이미지 박스 기본 설정 */
+.tweet-image-box {
+    margin-top: 12px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eff3f4;
+    display: grid;       /* flex 대신 grid 사용 */
+    gap: 2px;            /* 사진 사이의 간격 */
+    background-color: #eff3f4;
+}
+
+/* 기본 이미지 설정 */
+.tweet-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 1개일 때: 전체 너비 */
+.tweet-image-box.img-1 {
+    grid-template-columns: 1fr;
+}
+
+/* 2개일 때: 좌우 1:1 분할 */
+.tweet-image-box.img-2 {
+    grid-template-columns: 1fr 1fr;
+    height: 280px; /* 적절한 높이 설정 */
+}
+
+/* 3개일 때: 왼쪽 큰 이미지 1개 + 오른쪽 작은 이미지 2개 */
+.tweet-image-box.img-3 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 280px;
+}
+.tweet-image-box.img-3 img:first-child {
+    grid-row: span 2; /* 첫 번째 이미지가 세로로 두 칸 차지 */
+}
+
+/* 4개일 때: 2x2 격자 분할 (요청하신 부분) */
+.tweet-image-box.img-4 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 280px; /* 4개일 때 전체 높이 */
+}
